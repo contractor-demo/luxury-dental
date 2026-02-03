@@ -7,373 +7,308 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- CORE SETTINGS --- */
+        /* --- איפוס וייצוב (מונע תזוזות) --- */
+        * { box-sizing: border-box; outline: none; }
+        
         html, body {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --bg-deep: #050505;
-            --gold-metallic: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
-            --gold-text: #D4AF37;
-            --text-main: #ffffff;
-            --text-sub: #b0b0b0;
-        }
-
-        body {
-            background-color: var(--bg-deep);
-            color: var(--text-main);
+            margin: 0; padding: 0;
+            width: 100%; max-width: 100vw;
+            overflow-x: hidden; /* מונע גלילה לצדדים */
+            background-color: #050505;
             font-family: 'Heebo', sans-serif;
-            line-height: 1.6;
+            color: #fff;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            z-index: 99999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.8s ease;
-        }
-        .loader-logo {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            background: var(--gold-metallic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        .loader-bar {
-            width: 100px; height: 2px;
-            background: #222;
-            position: relative;
-            overflow: hidden;
-        }
-        .loader-bar::after {
-            content: '';
-            position: absolute;
-            left: -100%; top: 0; width: 100%; height: 100%;
-            background: var(--gold-metallic);
-            animation: loading 2s infinite;
-        }
-        @keyframes loading { 100% { left: 100%; } }
-
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3, h4 {
-            font-family: 'Cinzel', serif;
-            text-transform: uppercase;
-            margin: 0;
+        /* סכמת צבעים יוקרתית */
+        :root {
+            --gold: #D4AF37;
+            --gold-shine: linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 60%, #FBF5B7 100%);
+            --dark-glass: rgba(20, 20, 20, 0.9);
         }
 
+        /* טיפוגרפיה */
+        h1, h2, h3 { font-family: 'Cinzel', serif; text-transform: uppercase; margin: 0; }
+        
         .gold-text {
-            background: var(--gold-metallic);
+            background: var(--gold-shine);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
+            font-weight: 700;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (החלק העליון) --- */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             width: 100%;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
-            position: relative;
-            /* תמונה חדשה: אישה מחייכת בתקריב אמנותי */
-            background: linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(5,5,5,1) 100%), 
-                        url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center top;
+            align-items: center; /* מרכוז אופקי */
+            text-align: center; /* מרכוז טקסט */
             padding: 20px;
+            position: relative;
+            /* תמונה אבסטרקטית כהה ויוקרתית */
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(5,5,5,1) 100%), 
+                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
         }
 
         .hero-content {
-            z-index: 2;
             max-width: 800px;
-            margin: 0 auto;
+            width: 100%;
+            z-index: 2;
             display: flex;
             flex-direction: column;
-            align-items: center; /* מבטיח שהכל ימורכז */
+            align-items: center; /* מבטיח שהכל באמצע */
         }
 
-        .badge-vip {
+        .badge {
+            border: 1px solid var(--gold);
+            padding: 8px 15px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            background: rgba(0,0,0,0.5);
             display: inline-block;
-            border: 1px solid var(--gold-text);
-            padding: 8px 16px;
-            color: var(--gold-text);
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(5px);
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 25px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #ddd;
-            margin-bottom: 40px;
-            font-weight: 300;
-            max-width: 600px;
-        }
-
-        /* --- BUTTON CENTERING FIX --- */
-        .btn-wrapper {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .btn-gold {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 22px 40px;
-            background: var(--gold-metallic);
-            background-size: 200% auto;
-            color: #111;
-            text-decoration: none;
-            font-weight: 800;
-            font-family: 'Cinzel', serif;
             font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        /* --- הכפתור המושלם --- */
+        .btn-main {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            min-width: 280px; /* רוחב מינימלי למראה מכובד */
+            padding: 18px 30px;
+            background: var(--gold-shine);
+            color: #000;
+            font-weight: bold;
+            font-family: 'Cinzel', serif;
+            text-decoration: none;
             border-radius: 2px;
-            box-shadow: 0 0 40px rgba(191, 149, 63, 0.3);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: 0 0 30px rgba(191, 149, 63, 0.3);
+            transition: transform 0.3s;
         }
+        
+        .btn-main:active { transform: scale(0.98); }
 
-        .btn-gold:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 60px rgba(191, 149, 63, 0.6);
-            background-position: right center;
-        }
-
-        /* --- CARDS & SECTIONS --- */
+        /* --- אזור שירותים (כרטיסי זכוכית) --- */
+        .section { padding: 80px 20px; text-align: center; }
+        
         .container {
             max-width: 1100px;
-            width: 90%;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .section-pad { padding: 100px 0; }
-        
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
-        .divider { width: 60px; height: 3px; background: var(--gold-metallic); margin: 0 auto; }
 
-        .grid-3 {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 25px;
+            width: 100%;
+            margin-top: 40px;
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            padding: 40px 30px;
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px 20px;
+            transition: 0.3s;
+        }
+        .card:hover { border-color: var(--gold); background: rgba(255,255,255,0.05); }
+        .card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; color: #fff; }
+        .card p { color: #aaa; font-size: 0.95rem; }
+
+        /* --- המלצות --- */
+        .review {
+            background: #111;
+            padding: 30px;
+            border-right: 3px solid var(--gold);
+            text-align: right; /* טקסט בעברית מימין */
+        }
+        .stars { color: var(--gold); margin-bottom: 10px; }
+
+        /* --- פוטר --- */
+        footer {
+            background: #000;
+            padding: 60px 20px;
             text-align: center;
-            transition: 0.4s;
+            border-top: 1px solid #222;
         }
-        .glass-card:hover { transform: translateY(-10px); border-color: var(--gold-text); }
         
-        .glass-card i {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
-            background: var(--gold-metallic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .contact-box {
+            background: #0a0a0a;
+            padding: 20px;
+            border: 1px solid #222;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
         }
-        .glass-card h3 { color: #fff; margin-bottom: 15px; }
-        .glass-card p { color: var(--text-sub); }
-
-        /* --- FOOTER & FLOATING --- */
-        footer { background: #000; padding: 80px 0 40px; border-top: 1px solid #222; text-align: center; }
         
-        .phone-directory {
-            display: flex; flex-direction: column; gap: 15px; margin: 30px auto; max-width: 350px;
+        .phone-link {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #222;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
         }
-        .phone-row {
-            display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
-            background: rgba(255,255,255,0.05); border: 1px solid #333; color: #fff; text-decoration: none; transition: 0.3s;
-        }
-        .phone-row:hover { border-color: var(--gold-text); background: rgba(255,255,255,0.1); }
-        .phone-label { font-size: 0.9rem; color: #888; text-transform: uppercase; }
-        .phone-number { font-family: 'Cinzel', serif; color: var(--gold-text); font-weight: bold; }
+        .phone-link:last-child { border-bottom: none; }
+        .phone-link span:last-child { color: var(--gold); font-weight: bold; }
 
+        /* --- כפתור צף --- */
         .float-btn {
-            position: fixed; bottom: 25px; left: 25px;
-            width: 60px; height: 60px; background: #111;
-            border: 2px solid var(--gold-text); border-radius: 50%;
+            position: fixed; bottom: 20px; left: 20px;
+            width: 55px; height: 55px;
+            background: #000;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: var(--gold-text); font-size: 24px; z-index: 1000; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            color: var(--gold);
+            font-size: 22px;
+            z-index: 100;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
         }
 
+        /* התאמות למובייל */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .btn-gold { width: 100%; padding: 18px; flex-direction: column; gap: 5px; }
-            .container { width: 92%; }
+            .hero h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; } /* טור אחד במובייל */
+            .btn-main { width: 100%; } /* כפתור רחב במובייל */
         }
     </style>
 </head>
 <body>
 
-    <div id="preloader">
-        <div class="loader-logo">DR. PREISS</div>
-        <div class="loader-bar"></div>
-    </div>
-
     <a href="tel:097489989" class="float-btn"><i class="fas fa-phone"></i></a>
 
     <section class="hero">
-        <div class="hero-content">
-            <div class="badge-vip" data-aos="fade-down">TOP 25 COSMETIC DENTISTS UK</div>
-            <h1 data-aos="zoom-in" data-aos-duration="1200">
-                <span class="gold-text">SMILE STUDIO</span><br>
-                MASTERPIECE DENTISTRY
-            </h1>
-            <p data-aos="fade-up" data-aos-delay="300">
-                מרפאת הבוטיק של ד"ר אילן פרייס.<br>
-                סטנדרט בינלאומי. תוצאות עוצרות נשימה.
-            </p>
+        <div class="hero-content" data-aos="fade-up">
+            <div class="badge">TOP 25 COSMETIC DENTISTS UK</div>
             
-            <div class="btn-wrapper" data-aos="fade-up" data-aos-delay="500">
-                <a href="tel:097489989" class="btn-gold">
-                    <span>09-748-9989</span>
-                    <span style="font-size: 0.9em; font-weight: normal;">| לתיאום תור VIP</span>
-                </a>
-            </div>
+            <h1>
+                <span class="gold-text">SMILE STUDIO</span><br>
+                BY DR. ILAN PREISS
+            </h1>
+            
+            <p>
+                מרפאת הבוטיק המובילה בישראל.<br>
+                סטנדרט בריטי. אסתטיקה עילית.
+            </p>
+
+            <a href="tel:097489989" class="btn-main">
+                <i class="fas fa-phone" style="margin-left: 10px;"></i>
+                09-748-9989 | לתיאום תור
+            </a>
         </div>
     </section>
 
-    <div style="background: #0a0a0a; border-bottom: 1px solid #222; padding: 30px 0;">
-        <div class="container grid-3" style="gap: 15px; text-align: center;">
-            <div data-aos="fade-up">
-                <i class="fas fa-trophy" style="color: var(--gold-text); margin-bottom: 10px;"></i>
-                <h4 style="font-size: 0.9rem; color: #888;">TOP 25 UK</h4>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-certificate" style="color: var(--gold-text); margin-bottom: 10px;"></i>
-                <h4 style="font-size: 0.9rem; color: #888;">AACD MEMBER</h4>
-            </div>
-            <div data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-star" style="color: var(--gold-text); margin-bottom: 10px;"></i>
-                <h4 style="font-size: 0.9rem; color: #888;">AWARD WINNER</h4>
-            </div>
+    <div style="background: #0a0a0a; padding: 30px 20px; text-align: center; border-bottom: 1px solid #222;">
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+            <div><i class="fas fa-trophy" style="color: var(--gold);"></i> <span style="color:#888; margin-right:5px;">TOP 25 UK</span></div>
+            <div><i class="fas fa-certificate" style="color: var(--gold);"></i> <span style="color:#888; margin-right:5px;">AACD MEMBER</span></div>
         </div>
     </div>
 
-    <section class="section-pad">
+    <section class="section">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>אומנות החיוך</h2>
-                <div class="divider"></div>
-            </div>
+            <h2 class="gold-text">אומנות החיוך</h2>
+            <div style="width: 50px; height: 2px; background: var(--gold); margin: 15px auto;"></div>
             
-            <div class="grid-3">
-                <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid">
+                <div class="card" data-aos="fade-up">
                     <i class="far fa-gem"></i>
                     <h3>ציפויי חרסינה</h3>
-                    <p>פורצלן דקיק בעבודת יד אומנותית. התאמה מושלמת למבנה הפנים למראה טבעי ויוקרתי.</p>
+                    <p>עיצוב חיוך מושלם בהתאמה אישית למבנה הפנים.</p>
                 </div>
-                <div class="glass-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-magic"></i>
                     <h3>הלבנת ZOOM</h3>
-                    <p>טכנולוגיית ההלבנה המתקדמת בעולם. הופכים את החיוך לפנינה זוהרת בטיפול אחד.</p>
+                    <p>טכנולוגיית ההלבנה המתקדמת בעולם לתוצאות מיידיות.</p>
                 </div>
-                <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
                     <i class="fas fa-tooth"></i>
-                    <h3>השתלות פרימיום</h3>
-                    <p>שיקום הפה בחומרים הביו-קומפטיביליים הטובים בעולם. אסתטיקה ועמידות ללא פשרות.</p>
+                    <h3>Invisalign</h3>
+                    <p>יישור שיניים שקוף ובלתי נראה בטכנולוגיה חדשנית.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-pad" style="background: rgba(0,0,0,0.3);">
+    <section class="section" style="background: #080808;">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>מטופלים מספרים</h2>
-                <div class="divider"></div>
-            </div>
-
-            <div class="grid-3">
-                <div class="glass-card" style="text-align: right;" data-aos="fade-right">
-                    <div style="color: var(--gold-text); margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"אין מרוצה יותר ממני. ד"ר פרייס הוא אומן ובן אדם מקסים. רפואת שיניים ברמת מצויינות. אני לא מחליפה מרפאה!"</p>
-                    <h4 style="color: #fff; font-size: 0.9rem;">- Aline Grey</h4>
+            <h2 style="margin-bottom: 40px;">מטופלים מספרים</h2>
+            <div class="grid">
+                <div class="review" data-aos="fade-right">
+                    <div class="stars">★★★★★</div>
+                    <p style="font-style: italic; color: #ccc;">"ד"ר פרייס הוא אומן. אין מילה אחרת. השירות, המקצועיות והתוצאה - הכל מושלם."</p>
+                    <h4 style="margin-top: 15px;">- Aline Grey</h4>
                 </div>
-                <div class="glass-card" style="text-align: right;" data-aos="fade-left">
-                    <div style="color: var(--gold-text); margin-bottom: 10px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"מחיר מעולה לטיפול ברמה הכי גבוהה שאפשר לבקש. אירה השיננית מדהימה ומקצועית. מומלצת בחום."</p>
-                    <h4 style="color: #fff; font-size: 0.9rem;">- קרן אברמוביץ</h4>
+                <div class="review" data-aos="fade-left">
+                    <div class="stars">★★★★★</div>
+                    <p style="font-style: italic; color: #ccc;">"מרפאה ברמה אחרת לגמרי ממה שהכרתי בארץ. יחס אישי ותוצאות מדהימות."</p>
+                    <h4 style="margin-top: 15px;">- קרן אברמוביץ</h4>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div data-aos="zoom-in">
-                <h2 class="gold-text" style="font-size: 2rem; margin-bottom: 20px;">THE SMILE STUDIO</h2>
-                <p style="color: #999; margin-bottom: 40px;">רחוב המעפילים 39, הרצליה פיתוח</p>
-                
-                <div class="phone-directory">
-                    <a href="tel:097489989" class="phone-row">
-                        <span class="phone-label">מוקד ראשי</span>
-                        <span class="phone-number">09-748-9989</span>
-                    </a>
-                    <a href="tel:0772306628" class="phone-row">
-                        <span class="phone-label">ישיר למרפאה</span>
-                        <span class="phone-number">077-230-6628</span>
-                    </a>
-                    <a href="tel:0772306626" class="phone-row">
-                        <span class="phone-label">משרד</span>
-                        <span class="phone-number">077-230-6626</span>
-                    </a>
-                </div>
+        <div class="container" data-aos="zoom-in">
+            <h2 class="gold-text" style="margin-bottom: 10px;">THE SMILE STUDIO</h2>
+            <p style="color: #666;">הרצליה פיתוח, רחוב המעפילים 39</p>
 
-                <div style="margin-top: 60px; color: #444; font-size: 0.75rem; letter-spacing: 1px;">
-                    © 2024 DR. ILAN PREISS. LUXURY DENTAL CLINIC.
-                </div>
+            <div class="contact-box">
+                <a href="tel:097489989" class="phone-link">
+                    <span>מוקד ראשי</span>
+                    <span>09-748-9989</span>
+                </a>
+                <a href="tel:0772306628" class="phone-link">
+                    <span>ישיר למרפאה</span>
+                    <span>077-230-6628</span>
+                </a>
+                <a href="tel:0772306626" class="phone-link">
+                    <span>משרד</span>
+                    <span>077-230-6626</span>
+                </a>
+            </div>
+            
+            <div style="margin-top: 40px; color: #444; font-size: 0.8rem;">
+                © 2024 Dr. Ilan Preiss. Luxury Dental Clinic.
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, offset: 100, duration: 1000 });
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                setTimeout(() => { preloader.style.display = 'none'; }, 800);
-            }, 1000);
-        });
+        AOS.init({ once: true, offset: 50, duration: 800 });
     </script>
 </body>
 </html>
