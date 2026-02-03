@@ -3,155 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Name | Aesthetic Dentistry</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+    <title>Dr. Cohen | רפואת שיניים אסתטית עלית</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <style>
         :root {
-            --bg-color: #0a0a0a;
-            --text-color: #f0f0f0;
+            --bg-dark: #050505;
+            --text-light: #f5f5f5;
             --gold: #D4AF37;
-            --gold-gradient: linear-gradient(45deg, #D4AF37, #C5A028, #E6C148);
-            --dark-panel: rgba(255, 255, 255, 0.05);
+            --gold-hover: #F2C94C;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F2C94C 100%);
+            --glass-bg: rgba(20, 20, 20, 0.6);
+            --glass-border: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             font-family: 'Heebo', sans-serif;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            margin: 0;
+            color: var(--gold);
         }
 
-        /* Hero Section */
+        /* --- כפתורים צפים --- */
+        .floating-contacts {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .float-btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            opacity: 0;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float {
+            background: #25d366;
+            color: white;
+        }
+        
+        .phone-float {
+            background: var(--gold-gradient);
+            color: black;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* --- Hero Section --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            /* שים כאן תמונת רקע איכותית של קליניקה או דוגמן/ית מחייכים */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://source.unsplash.com/random/1920x1080/?luxury,dental') no-repeat center center/cover;
+            padding: 20px;
             position: relative;
         }
 
         .hero-content {
-            z-index: 2;
-            max-width: 800px;
-            padding: 20px;
+            max-width: 900px;
+        }
+
+        .sub-title {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+            color: var(--text-light);
+            opacity: 0.8;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.5s;
         }
 
         .hero p {
             font-size: 1.5rem;
             font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 40px;
-            opacity: 0;
-            animation: fadeUp 1s forwards 0.8s;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            opacity: 0;
-            animation: fadeUp 1s forwards 1.1s;
-        }
-
-        .cta-btn:hover {
-            background: var(--gold);
+        .main-cta {
+            padding: 20px 50px;
+            background: var(--gold-gradient);
             color: #000;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 50px;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Features Section */
-        .features {
-            padding: 100px 20px;
+        .main-cta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.6);
+        }
+
+        /* --- Features Section with Glassmorphism --- */
+        .section-pad {
+            padding: 120px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 80px;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        .card {
-            background: var(--dark-panel);
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s;
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 50px 40px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .glass-card:hover {
             border-color: var(--gold);
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
         }
 
-        .card h3 {
-            font-size: 1.8rem;
+        .card-icon {
+            font-size: 3rem;
             color: var(--gold);
-            margin-bottom: 15px;
+            margin-bottom: 25px;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .glass-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
-        /* Responsive */
+        .glass-card p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.1rem; }
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            .floating-contacts { bottom: 20px; left: 20px; }
+            .float-btn { width: 50px; height: 50px; font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="floating-contacts">
+        <a href="https://wa.me/972500000000" class="float-btn whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="tel:0500000000" class="float-btn phone-float">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
     <section class="hero">
         <div class="hero-content">
-            <p>DR. COHEN | ESTHETIC CENTER</p>
-            <h1>החיוך שתמיד דמיינת<br>מתחיל כאן.</h1>
-            <p>רפואת שיניים אסתטית ברמה בינלאומית. דיוק. יוקרה. שלמות.</p>
-            <a href="#" class="cta-btn">תאם פגישת ייעוץ</a>
+            <span class="sub-title" data-aos="fade-down" data-aos-duration="1000">Dr. Cohen Esthetic Center</span>
+            <h1 data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">אומנות החיוך<br>החדש שלך.</h1>
+            <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">חווית טיפול אקסקלוסיבית בסטנדרט שטרם הכרת. דיוק גרמני, אסתטיקה איטלקית.</p>
+            <a href="#contact" class="main-cta" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="600">לתיאום ייעוץ VIP</a>
         </div>
     </section>
 
-    <div class="features">
-        <div class="card">
-            <h3>ציפויים אסתטיים</h3>
-            <p>עיצוב חיוך מחדש באמצעות חרסינה דקיקה בטכנולוגיה מתקדמת. ללא כאב, תוצאה מיידית.</p>
+    <section class="section-pad">
+        <h2 class="section-title" data-aos="fade-up">שירותי הדגל שלנו</h2>
+        <div class="features-grid">
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-icon"><i class="fas fa-gem"></i></div>
+                <h3>ציפויי חרסינה עלית</h3>
+                <p>וינירס (Veneers) דקיקים במיוחד בטכנולוגיית E-max. עיצוב חיוך הוליוודי מלא בתוך 2 מפגשים בלבד, ללא השחזה אגרסיבית.</p>
+            </div>
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-icon"><i class="fas fa-tooth"></i></div>
+                <h3>השתלות ביום אחד</h3>
+                <p>פתרונות All-on-4/6 מתקדמים. חזרה לשגרה מלאה עם שיניים קבועות וחזקות עוד באותו היום. שיקום פה מלא.</p>
+            </div>
+            <div class="glass-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-icon"><i class="fas fa-magic"></i></div>
+                <h3>אסתטיקה והלבנה</h3>
+                <p>שילוב של הלבנת לייזר עוצמתית עם יישור שיניים שקוף (Invisalign) לתוצאה מושלמת והרמונית של הפנים.</p>
+            </div>
         </div>
-        <div class="card">
-            <h3>השתלות פרימיום</h3>
-            <p>שיקום הפה ברמה הגבוהה ביותר עם חומרים ביו-קומפטיביליים ועמידות לכל החיים.</p>
-        </div>
-        <div class="card">
-            <h3>הלבנה בלייזר</h3>
-            <p>טכנולוגיית ה-Zoom המתקדמת בעולם. הופכים את החיוך ללבן ובוהק תוך 45 דקות.</p>
-        </div>
-    </div>
+    </section>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, /* האנימציה קורית רק פעם אחת */
+            offset: 100
+        });
+    </script>
 </body>
 </html>
