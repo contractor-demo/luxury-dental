@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Name | Aesthetic Dentistry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --gold: #D4AF37;
+            --gold-gradient: linear-gradient(45deg, #D4AF37, #C5A028, #E6C148);
+            --dark-panel: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Heebo', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 1s forwards 0.8s;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeUp 1s forwards 1.1s;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--dark-panel);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p>DR. COHEN | ESTHETIC CENTER</p>
+            <h1>החיוך שתמיד דמיינת<br>מתחיל כאן.</h1>
+            <p>רפואת שיניים אסתטית ברמה בינלאומית. דיוק. יוקרה. שלמות.</p>
+            <a href="#" class="cta-btn">תאם פגישת ייעוץ</a>
+        </div>
+    </section>
+
+    <div class="features">
+        <div class="card">
+            <h3>ציפויים אסתטיים</h3>
+            <p>עיצוב חיוך מחדש באמצעות חרסינה דקיקה בטכנולוגיה מתקדמת. ללא כאב, תוצאה מיידית.</p>
+        </div>
+        <div class="card">
+            <h3>השתלות פרימיום</h3>
+            <p>שיקום הפה ברמה הגבוהה ביותר עם חומרים ביו-קומפטיביליים ועמידות לכל החיים.</p>
+        </div>
+        <div class="card">
+            <h3>הלבנה בלייזר</h3>
+            <p>טכנולוגיית ה-Zoom המתקדמת בעולם. הופכים את החיוך ללבן ובוהק תוך 45 דקות.</p>
+        </div>
+    </div>
+
+</body>
+</html>
