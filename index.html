@@ -12,11 +12,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- CORE SETTINGS FOR STABILITY --- */
+        /* --- CORE SETTINGS --- */
         html, body {
             width: 100%;
             max-width: 100%;
-            overflow-x: hidden; /* מונע גלילה צדית */
+            overflow-x: hidden;
             margin: 0;
             padding: 0;
             scroll-behavior: smooth;
@@ -24,7 +24,6 @@
 
         :root {
             --bg-deep: #050505;
-            --bg-card: rgba(20, 20, 20, 0.85);
             --gold-metallic: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
             --gold-text: #D4AF37;
             --text-main: #ffffff;
@@ -36,27 +35,9 @@
             color: var(--text-main);
             font-family: 'Heebo', sans-serif;
             line-height: 1.6;
-            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #050505 70%);
         }
 
-        /* --- TYPOGRAPHY & GOLD --- */
-        h1, h2, h3, h4 {
-            font-family: 'Cinzel', serif;
-            text-transform: uppercase;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        .gold-text {
-            background: var(--gold-metallic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800;
-            text-shadow: 0px 2px 10px rgba(191, 149, 63, 0.3);
-        }
-
-        /* --- PRELOADER (LUXURY INTRO) --- */
+        /* --- PRELOADER --- */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -91,6 +72,21 @@
         }
         @keyframes loading { 100% { left: 100%; } }
 
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .gold-text {
+            background: var(--gold-metallic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
         /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh;
@@ -100,10 +96,11 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,1) 100%), 
-                        url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop');
+            /* תמונה חדשה: אישה מחייכת בתקריב אמנותי */
+            background: linear-gradient(180deg, rgba(5,5,5,0.4) 0%, rgba(5,5,5,1) 100%), 
+                        url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop');
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             padding: 20px;
         }
 
@@ -111,6 +108,9 @@
             z-index: 2;
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* מבטיח שהכל ימורכז */
         }
 
         .badge-vip {
@@ -126,7 +126,7 @@
         }
 
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 25px;
             text-shadow: 0 10px 30px rgba(0,0,0,0.8);
@@ -138,13 +138,16 @@
             margin-bottom: 40px;
             font-weight: 300;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* --- THE MILLION DOLLAR BUTTON --- */
+        /* --- BUTTON CENTERING FIX --- */
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
         .btn-gold {
-            position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -157,66 +160,46 @@
             font-weight: 800;
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
-            border-radius: 2px; /* מראה יוקרתי יותר ופחות "אפליקציה" */
+            border-radius: 2px;
             box-shadow: 0 0 40px rgba(191, 149, 63, 0.3);
             transition: all 0.4s ease;
-            overflow: hidden;
             border: 1px solid rgba(255,255,255,0.4);
         }
 
         .btn-gold:hover {
-            background-position: right center;
             transform: scale(1.02);
             box-shadow: 0 0 60px rgba(191, 149, 63, 0.6);
+            background-position: right center;
         }
 
-        /* --- GLASS CARDS (SERVICES & REVIEWS) --- */
+        /* --- CARDS & SECTIONS --- */
         .container {
             max-width: 1100px;
             width: 90%;
             margin: 0 auto;
         }
-
         .section-pad { padding: 100px 0; }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--text-main);
-            margin-bottom: 10px;
-        }
-        .section-header .divider {
-            width: 60px; height: 3px;
-            background: var(--gold-metallic);
-            margin: 0 auto;
-        }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .divider { width: 60px; height: 3px; background: var(--gold-metallic); margin: 0 auto; }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            justify-content: center; /* ממקם באמצע */
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.03); /* שקוף */
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px); /* אפקט זכוכית */
+            backdrop-filter: blur(15px);
             padding: 40px 30px;
             text-align: center;
-            transition: transform 0.4s, border-color 0.4s;
-            position: relative;
+            transition: 0.4s;
         }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--gold-text);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
+        .glass-card:hover { transform: translateY(-10px); border-color: var(--gold-text); }
+        
         .glass-card i {
             font-size: 2.8rem;
             margin-bottom: 25px;
@@ -224,68 +207,36 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .glass-card h3 { color: #fff; margin-bottom: 15px; }
+        .glass-card p { color: var(--text-sub); }
 
-        .glass-card h3 { color: #fff; margin-bottom: 15px; font-size: 1.4rem; }
-        .glass-card p { color: var(--text-sub); font-size: 1rem; }
-
-        /* --- FOOTER (VIP CONTACT) --- */
-        footer {
-            background: #000;
-            padding: 80px 0 40px;
-            border-top: 1px solid #222;
-            text-align: center;
-        }
-
+        /* --- FOOTER & FLOATING --- */
+        footer { background: #000; padding: 80px 0 40px; border-top: 1px solid #222; text-align: center; }
+        
         .phone-directory {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin: 30px auto;
-            max-width: 350px;
+            display: flex; flex-direction: column; gap: 15px; margin: 30px auto; max-width: 350px;
         }
-
         .phone-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #333;
-            color: #fff;
-            text-decoration: none;
-            transition: 0.3s;
+            display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;
+            background: rgba(255,255,255,0.05); border: 1px solid #333; color: #fff; text-decoration: none; transition: 0.3s;
         }
-
-        .phone-row:hover {
-            border-color: var(--gold-text);
-            background: rgba(255,255,255,0.1);
-        }
-
+        .phone-row:hover { border-color: var(--gold-text); background: rgba(255,255,255,0.1); }
         .phone-label { font-size: 0.9rem; color: #888; text-transform: uppercase; }
         .phone-number { font-family: 'Cinzel', serif; color: var(--gold-text); font-weight: bold; }
 
-        /* --- FLOATING BUTTON --- */
         .float-btn {
-            position: fixed;
-            bottom: 25px; left: 25px;
-            width: 60px; height: 60px;
-            background: #111;
-            border: 2px solid var(--gold-text);
-            border-radius: 50%;
+            position: fixed; bottom: 25px; left: 25px;
+            width: 60px; height: 60px; background: #111;
+            border: 2px solid var(--gold-text); border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: var(--gold-text);
-            font-size: 24px;
+            color: var(--gold-text); font-size: 24px; z-index: 1000; text-decoration: none;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            z-index: 1000;
-            text-decoration: none;
         }
 
-        /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .btn-gold { width: 100%; padding: 18px; flex-direction: column; gap: 5px; }
             .container { width: 92%; }
-            .section-pad { padding: 70px 0; }
         }
     </style>
 </head>
@@ -309,7 +260,8 @@
                 מרפאת הבוטיק של ד"ר אילן פרייס.<br>
                 סטנדרט בינלאומי. תוצאות עוצרות נשימה.
             </p>
-            <div data-aos="fade-up" data-aos-delay="500">
+            
+            <div class="btn-wrapper" data-aos="fade-up" data-aos-delay="500">
                 <a href="tel:097489989" class="btn-gold">
                     <span>09-748-9989</span>
                     <span style="font-size: 0.9em; font-weight: normal;">| לתיאום תור VIP</span>
@@ -320,7 +272,7 @@
 
     <div style="background: #0a0a0a; border-bottom: 1px solid #222; padding: 30px 0;">
         <div class="container grid-3" style="gap: 15px; text-align: center;">
-            <div data-aos="fade-up" data-aos-delay="0">
+            <div data-aos="fade-up">
                 <i class="fas fa-trophy" style="color: var(--gold-text); margin-bottom: 10px;"></i>
                 <h4 style="font-size: 0.9rem; color: #888;">TOP 25 UK</h4>
             </div>
@@ -414,15 +366,7 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // הפעלת אנימציות
-        AOS.init({
-            once: true,
-            offset: 100,
-            duration: 1000,
-            easing: 'ease-out-cubic'
-        });
-        
-        // הסרת מסך טעינה
+        AOS.init({ once: true, offset: 100, duration: 1000 });
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
