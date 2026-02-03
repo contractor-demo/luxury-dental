@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Ilan Preiss | Udental - Masterpiece Dentistry</title>
+    <title>Dr. Ilan Preiss | Top 25 UK Cosmetic Dentists</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,12 @@
 
     <style>
         :root {
-            --bg: #050505;
-            --gold-gradient: linear-gradient(45deg, #BF953F, #FCF6BA, #B38728, #FBF5B7);
+            --bg: #080808;
+            --card-bg: #121212;
+            --gold-primary: #D4AF37;
+            --gold-gradient: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7);
             --text: #ffffff;
+            --text-muted: #a0a0a0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,9 +28,10 @@
             color: var(--text);
             font-family: 'Heebo', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* --- PRELOADER (טעינה) --- */
+        /* --- PRELOADER --- */
         #preloader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -36,25 +40,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 1s ease;
+            transition: opacity 0.8s ease;
         }
+        .loader-content { text-align: center; }
         .loader-content h2 {
             font-family: 'Cinzel', serif;
-            color: #BF953F;
-            font-size: 2rem;
-            letter-spacing: 5px;
+            color: var(--gold-primary);
+            font-size: 2.5rem;
+            letter-spacing: 3px;
         }
         .loader-line {
             width: 0;
-            height: 2px;
+            height: 3px;
             background: var(--gold-gradient);
-            margin: 20px auto;
+            margin: 15px auto;
             animation: loadLine 1.5s ease-in-out forwards;
         }
-        @keyframes loadLine { to { width: 150px; } }
+        @keyframes loadLine { to { width: 100%; } }
 
         /* --- TYPOGRAPHY --- */
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Cinzel', serif;
             text-transform: uppercase;
         }
@@ -67,6 +72,39 @@
             font-weight: 700;
         }
 
+        /* --- BUTTONS --- */
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 45px;
+            background: var(--gold-gradient);
+            background-size: 200% auto;
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            box-shadow: 0 0 25px rgba(191, 149, 63, 0.4);
+            transition: all 0.4s ease;
+            animation: shine 4s infinite linear;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 50px rgba(191, 149, 63, 0.7);
+            background-position: right center;
+        }
+
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh;
@@ -75,8 +113,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            /* תמונת רקע איכותית */
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1974&auto=format&fit=crop');
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1629909615184-74f495363b63?q=80&w=2069&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -88,106 +125,166 @@
             max-width: 900px;
         }
 
-        .hero p.subtitle {
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            color: #ccc;
-            margin-bottom: 20px;
+        .badge {
+            display: inline-block;
+            border: 1px solid var(--gold-primary);
+            padding: 10px 20px;
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
         }
 
         .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #ddd;
             margin-bottom: 50px;
+            font-weight: 300;
         }
 
-        /* --- כפתור היהלום (THE MONEY BUTTON) --- */
-        .btn-gold {
-            display: inline-flex;
-            align-items: center;
+        /* --- CREDENTIALS BAR --- */
+        .credentials {
+            background: #111;
+            padding: 40px 20px;
+            border-bottom: 1px solid #333;
+        }
+        .cred-grid {
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
-            padding: 22px 50px;
-            background: var(--gold-gradient);
-            background-size: 200% auto;
-            color: #000;
-            text-decoration: none;
-            font-weight: 800;
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            border-radius: 50px;
-            box-shadow: 0 0 30px rgba(191, 149, 63, 0.4);
-            transition: all 0.4s ease;
-            animation: shine 3s infinite linear;
-            border: 2px solid rgba(255,255,255,0.3);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .cred-item h4 {
+            color: var(--gold-primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .cred-item p {
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .btn-gold:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 60px rgba(191, 149, 63, 0.8);
+        /* --- SERVICES --- */
+        .section-pad { padding: 100px 20px; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--gold-primary);
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 80px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @keyframes shine {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- CARDS SECTION --- */
-        .services {
-            padding: 100px 20px;
-            background: #0a0a0a;
-        }
-        
-        .grid {
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .card {
-            background: linear-gradient(145deg, #151515, #0a0a0a);
+        .service-card {
+            background: var(--card-bg);
             padding: 50px 30px;
             border: 1px solid #222;
-            border-top: 3px solid #BF953F;
-            text-align: center;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
             transition: transform 0.4s;
+            transform-origin: right;
         }
 
-        .card:hover {
-            transform: translateY(-15px);
-            border-color: #FCF6BA;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        .service-card:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
         }
 
-        .card i {
-            font-size: 3.5rem;
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: #1a1a1a;
+        }
+
+        .service-card i {
+            font-size: 3rem;
             margin-bottom: 25px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .card h3 {
-            font-size: 1.8rem;
-            color: #fff;
-            margin-bottom: 15px;
+        /* --- TESTIMONIALS --- */
+        .review-card {
+            background: linear-gradient(145deg, #151515, #0a0a0a);
+            padding: 40px;
+            border: 1px solid #333;
+            border-radius: 10px;
         }
+        .stars { color: var(--gold-primary); margin-bottom: 15px; }
+        .review-text { font-style: italic; color: #ccc; margin-bottom: 20px; }
+        .review-author { font-weight: bold; color: #fff; font-family: 'Cinzel', serif; }
 
-        .card p {
-            color: #888;
+        /* --- CONTACT & FOOTER --- */
+        .footer {
+            background: #000;
+            padding: 80px 20px 40px;
+            border-top: 1px solid #333;
+            text-align: center;
+        }
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .phone-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .phone-item {
+            color: #ccc;
+            text-decoration: none;
             font-size: 1.1rem;
-            line-height: 1.6;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+        .phone-item:hover { color: var(--gold-primary); }
+        .phone-item i { color: var(--gold-primary); }
 
-        /* --- FLOATING BUTTONS (צפים) --- */
-        .floating-wrap {
+        /* --- FLOATING --- */
+        .float-wrap {
             position: fixed;
             bottom: 30px;
             left: 30px;
-            z-index: 999;
+            z-index: 100;
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -195,29 +292,22 @@
         .float-btn {
             width: 60px; height: 60px;
             border-radius: 50%;
+            background: #111;
+            border: 2px solid var(--gold-primary);
+            color: #fff;
             display: flex;
             align-items: center; justify-content: center;
-            font-size: 26px;
-            color: #fff;
+            font-size: 24px;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
-        .float-btn.phone { background: var(--gold-gradient); color: #000; }
-        
-        .float-btn:hover { transform: scale(1.15); }
+        .float-btn:hover { transform: scale(1.1); background: var(--gold-primary); color: #000; }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .btn-gold { 
-                padding: 15px 20px; 
-                font-size: 1.1rem; 
-                width: 100%;
-                flex-direction: column;
-                gap: 5px;
-            }
-            .floating-wrap { bottom: 20px; left: 20px; }
+            .hero h1 { font-size: 2.5rem; }
+            .cred-grid { flex-direction: column; gap: 30px; }
+            .btn-gold { width: 100%; padding: 15px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -225,60 +315,132 @@
 
     <div id="preloader">
         <div class="loader-content">
-            <h2>DR. PREISS</h2>
+            <h2>DR. ILAN PREISS</h2>
             <div class="loader-line"></div>
         </div>
     </div>
 
-    <div class="floating-wrap">
-        <a href="tel:0772306628" class="float-btn phone"><i class="fas fa-phone"></i></a>
+    <div class="float-wrap">
+        <a href="tel:097489989" class="float-btn"><i class="fas fa-phone-alt"></i></a>
     </div>
 
     <section class="hero">
         <div class="hero-content">
-            <p class="subtitle" data-aos="fade-down" data-aos-duration="1000">UDENTAL - HERZLIYA PITUACH</p>
-            <h1 class="gold-text" data-aos="zoom-in" data-aos-duration="1200">DR. ILAN PREISS<br>MASTERPIECE SMILES</h1>
-            
-            <div data-aos="fade-up" data-aos-delay="500">
-                <a href="tel:0772306628" class="btn-gold">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>077-230-6628 | לתיאום תור VIP</span>
+            <div class="badge" data-aos="fade-down">TOP 25 COSMETIC DENTISTS UK</div>
+            <h1 data-aos="zoom-in" data-aos-delay="200">
+                <span class="gold-text">SMILE STUDIO</span><br>
+                BY DR. ILAN PREISS
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="400">
+                "תנו לחיוך להיות סימן ההיכר שלכם"<br>
+                המרפאה היחידה בישראל בסטנדרט הבריטי הגבוה ביותר.
+            </p>
+            <div data-aos="fade-up" data-aos-delay="600">
+                <a href="tel:097489989" class="btn-gold">
+                    <i class="fas fa-phone"></i>
+                    09-748-9989 | לתיאום תור VIP
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="services">
-        <div class="grid">
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-gem"></i>
-                <h3>ציפויי חרסינה</h3>
-                <p>עיצוב חיוך מושלם בטכנולוגיה זעיר-פולשנית. דקיק, חזק, וללא פשרות על אסתטיקה.</p>
+    <section class="credentials">
+        <div class="cred-grid">
+            <div class="cred-item" data-aos="fade-up">
+                <h4>2x</h4>
+                <p>זוכה פרס "החיוך הלאומי" בבריטניה</p>
             </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-tooth"></i>
-                <h3>השתלות פרימיום</h3>
-                <p>פתרונות שיקום מתקדמים. חומרים ביו-קומפטיביליים ועמידות לכל החיים.</p>
+            <div class="cred-item" data-aos="fade-up" data-aos-delay="100">
+                <h4>Top 25</h4>
+                <p>רופאי השיניים הקוסמטיים המובילים ב-UK</p>
             </div>
-            <div class="card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-magic"></i>
-                <h3>הלבנה ואסתטיקה</h3>
-                <p>מערך טיפולים משלים להשגת המראה המדויק, הלבן והנוצץ שתמיד רצית.</p>
+            <div class="cred-item" data-aos="fade-up" data-aos-delay="200">
+                <h4>AACD</h4>
+                <p>חבר האקדמיה האמריקאית לאסתטיקה</p>
             </div>
         </div>
     </section>
 
+    <section class="section-pad">
+        <h2 class="section-title" data-aos="fade-up">אומנות החיוך</h2>
+        <p class="section-subtitle" data-aos="fade-up">טיפולי קצה בטכנולוגיה עולמית, עכשיו בהרצליה פיתוח.</p>
+        
+        <div class="cards-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-gem"></i>
+                <h3>ציפויי חרסינה</h3>
+                <p>עיצוב חיוך הוליוודי (Veneers) ללא פשרות. מותאם אישית למבנה הפנים.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-magic"></i>
+                <h3>הלבנת ZOOM</h3>
+                <p>טכנולוגיית ההלבנה המתקדמת בעולם. תוצאות מיידיות ומרהיבות.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-teeth"></i>
+                <h3>Invisalign</h3>
+                <p>יישור שיניים שקוף לחלוטין. אף אחד לא ידע, כולם יראו את ההבדל.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad" style="background: #0a0a0a;">
+        <h2 class="section-title" data-aos="fade-up">הלקוחות אומרים</h2>
+        <div class="cards-grid">
+            <div class="review-card" data-aos="fade-right">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"אין מרוצה יותר ממני. ד"ר פרייס הוא אומן ובן אדם מקסים. רפואת שיניים ברמת מצויינות. אני לא מחליפה מרפאה!"</p>
+                <p class="review-author">- Aline Grey</p>
+            </div>
+            <div class="review-card" data-aos="fade-left">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="review-text">"מחיר מעולה לטיפול ברמה הכי גבוהה שאפשר לבקש. אירה השיננית מדהימה ומקצועית. מומלצת בחום."</p>
+                <p class="review-author">- קרן אברמוביץ</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="contact-info" data-aos="zoom-in">
+            <h2 class="gold-text" style="margin-bottom: 30px;">THE SMILE STUDIO</h2>
+            <p style="font-size: 1.2rem; color: #fff; margin-bottom: 20px;">
+                <i class="fas fa-map-marker-alt"></i> רחוב המעפילים 39, הרצליה פיתוח
+            </p>
+            
+            <h4 style="color: #666; margin-bottom: 15px; font-size: 0.9rem;">מוקד טלפוני וזימון תורים:</h4>
+            
+            <div class="phone-list">
+                <a href="tel:097489989" class="phone-item">
+                    <i class="fas fa-phone"></i> 09-748-9989 (ראשי)
+                </a>
+                <a href="tel:0772306628" class="phone-item">
+                    <i class="fas fa-phone-alt"></i> 077-230-6628 (מרפאה)
+                </a>
+                <a href="tel:0772306626" class="phone-item">
+                    <i class="fas fa-phone-alt"></i> 077-230-6626 (משרד)
+                </a>
+            </div>
+
+            <br>
+            <a href="tel:097489989" class="btn-gold" style="padding: 15px 30px; font-size: 1rem; margin-top: 20px;">
+                חייג עכשיו
+            </a>
+        </div>
+        <div style="margin-top: 50px; color: #444; font-size: 0.8rem;">
+            © 2024 Dr. Ilan Preiss. Luxury Dental Clinic.
+        </div>
+    </footer>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        AOS.init({ once: true, offset: 50 });
         
-        // סקריפט להעלמת הטעינה
         window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
             setTimeout(() => {
+                const preloader = document.getElementById('preloader');
                 preloader.style.opacity = '0';
-                setTimeout(() => { preloader.style.display = 'none'; }, 1000);
-            }, 800);
+                setTimeout(() => { preloader.style.display = 'none'; }, 800);
+            }, 1000);
         });
     </script>
 </body>
